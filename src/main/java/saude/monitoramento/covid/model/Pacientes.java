@@ -2,7 +2,7 @@ package saude.monitoramento.covid.model;
 
 import java.util.Date;
 
-public class Paciente {
+public class Pacientes {
 	int paciente;
 	boolean temCPF;
 	int CNS;
