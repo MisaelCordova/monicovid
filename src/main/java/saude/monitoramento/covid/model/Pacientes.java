@@ -12,6 +12,8 @@ public class Pacientes {
     private int telefone;
     private boolean profisSaude;
     private int CPF;
+    private String Nomemae;
+    private char sexo;
     
     public long getPaciente() {
 		return paciente;
@@ -79,7 +81,6 @@ public class Pacientes {
 	public void setSexo(char sexo) {
 		this.sexo = sexo;
 	}
-	String Nomemae;
-    char sexo;
+	
 	
 }
