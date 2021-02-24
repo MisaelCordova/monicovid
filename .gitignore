@@ -12,6 +12,26 @@ target/
 .settings
 .springBeans
 .sts4-cache
+#add for me#
+*.class
+.DS_Store
+Servers/*
+.metadata
+.settings
+.classpath
+.project
+target/
+bin/
+rebel.xml
+.mvn*
+mvnw*
+*.jar
+*.war
+*.ear
+.mvn*
+mwnw*
+bin/
+
 
 ### IntelliJ IDEA ###
 .idea
@@ -31,3 +51,5 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
