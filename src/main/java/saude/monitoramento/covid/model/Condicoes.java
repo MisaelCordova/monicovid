@@ -1,14 +1,39 @@
 package saude.monitoramento.covid.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+
+@Entity
 public class Condicoes {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id_condicoes;
+	
+	@NotBlank(message="Preenchimento Obrigatorio")
 	private boolean DRCD; //Doenças Resporatórias Crônicas descompensadas
+	
+	@NotBlank(message="Preenchimento Obrigatorio")
 	private boolean DCC;  //Doenças Cardíacas Crônicas
+	
+	@NotBlank(message="Preenchimento Obrigatorio")
 	private boolean diabetes; 
+	
+	@NotBlank(message="Preenchimento Obrigatorio")
 	private boolean DRCEA; //Doenças Renais Crônicas em estagio avançado
+	
+	@NotBlank(message="Preenchimento Obrigatorio")
 	private boolean imunosupresssao;
+	
+	@NotBlank(message="Preenchimento Obrigatorio")
 	private boolean obesidade;
+	
+	@NotBlank(message="Preenchimento Obrigatorio")
 	private boolean puerpera;
+	
+	@NotBlank(message="Preenchimento Obrigatorio")
 	private boolean gestante;
 	
 	public long getId_condicoes() {

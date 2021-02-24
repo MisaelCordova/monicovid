@@ -1,14 +1,27 @@
 package saude.monitoramento.covid.model;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
+@Entity
 public class Pacientes {
-	private long paciente;
+	@Id 
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id_paciente;
 	private boolean temCPF;
 	private int CNS;
+	
+	@NotBlank(message = "Data de Nascimento Obrigatoria")
     private Date dateNasc;
+    
+    @NotBlank(message = "Nome Obrigatorio")
     private String nome;
-    private String bairro;
+  
+	private String bairro;
     private int telefone;
     private boolean profisSaude;
     private int CPF;
@@ -16,10 +29,10 @@ public class Pacientes {
     private char sexo;
     
     public long getPaciente() {
-		return paciente;
+		return id_paciente;
 	}
 	public void setPaciente(long paciente) {
-		this.paciente = paciente;
+		this.id_paciente = paciente;
 	}
 	public boolean isTemCPF() {
 		return temCPF;
@@ -81,6 +94,37 @@ public class Pacientes {
 	public void setSexo(char sexo) {
 		this.sexo = sexo;
 	}
+	
+	//Verificar onde como usar hashcode and equals 
+	  @Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + ((dateNasc == null) ? 0 : dateNasc.hashCode());
+			result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+			return result;
+		}
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Pacientes other = (Pacientes) obj;
+			if (dateNasc == null) {
+				if (other.dateNasc != null)
+					return false;
+			} else if (!dateNasc.equals(other.dateNasc))
+				return false;
+			if (nome == null) {
+				if (other.nome != null)
+					return false;
+			} else if (!nome.equals(other.nome))
+				return false;
+			return true;
+		}
 	
 	
 }

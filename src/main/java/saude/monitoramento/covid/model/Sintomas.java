@@ -1,7 +1,17 @@
 package saude.monitoramento.covid.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+@Entity
 public class Sintomas {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id_sintoma;
+	
 	private boolean dorgarganta;
 	private boolean dispineia;
 	private boolean febre;

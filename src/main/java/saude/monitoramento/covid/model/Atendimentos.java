@@ -2,15 +2,30 @@ package saude.monitoramento.covid.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+@Entity
 public class Atendimentos {
+	@Id
+	@GeneratedValue(strategy= GenerationType.AUTO)
 	private long id_atendimento;
+	
 	private Date fimsintoma;
 	private String Localtrabalho;
+	
+	@NotBlank(message="Preenchimento Obrigatorio")
 	private boolean  outroteste;
+	
 	private boolean atestadomedico;
 	private Date  ini_atatestado;
 	private Date fim_atestado;
+	
+	@NotBlank(message="Preenchimento Obrigatorio")
 	private String Desfeixo; //criar enum
+	
 	
 	public long getId_atendimento() {
 		return id_atendimento;

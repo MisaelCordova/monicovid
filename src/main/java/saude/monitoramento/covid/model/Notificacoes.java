@@ -1,16 +1,37 @@
 package saude.monitoramento.covid.model;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
+@Entity
 public class Notificacoes {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id_notificacao;
+	
+	@NotBlank(message="Preenchimento Obrigatorio")
 	private Date datanotificacao;
-	private String tp_teste; //Botar enum
-	private String resultado; //Botar Enum
+	
+	private String tp_teste; //Botar enum se não vier do esus
+	
+	@NotBlank(message="Preenchimento Obrigatorio")
+	private String resultado; //Botar Enum se não vier do esus
+	
+	@NotBlank(message="Preenchimento Obrigatorio")
 	private Date dt_notificacao;
+	
+	@NotBlank(message="Preenchimento Obrigatorio")
 	private Date dt_teste;
+	
 	private String laudo; //trocar tipo para receber arquivo imagem e pdf
+	
 	private String laboratorio;
+	
+	@NotBlank(message="Preenchimento Obrigatorio")
 	private Date Ini_sintomas;
 	public long getId_notificacao() {
 		return id_notificacao;
