@@ -3,7 +3,7 @@ package saude.monitoramento.covid.model;
 import java.util.Date;
 
 public class Pacientes {
-	private int paciente;
+	private long paciente;
 	private boolean temCPF;
 	private int CNS;
     private Date dateNasc;
@@ -13,10 +13,10 @@ public class Pacientes {
     private boolean profisSaude;
     private int CPF;
     
-    public int getPaciente() {
+    public long getPaciente() {
 		return paciente;
 	}
-	public void setPaciente(int paciente) {
+	public void setPaciente(long paciente) {
 		this.paciente = paciente;
 	}
 	public boolean isTemCPF() {

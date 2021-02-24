@@ -1,9 +1,9 @@
 package saude.monitoramento.covid.model;
 
 public class Condicoes {
-	private int id_condicoes;
+	private long id_condicoes;
 	private boolean DRCD; //Doenças Resporatórias Crônicas descompensadas
-	private boolean DCC;  //Doenças Cardiácas Crônicas
+	private boolean DCC;  //Doenças Cardíacas Crônicas
 	private boolean diabetes; 
 	private boolean DRCEA; //Doenças Renais Crônicas em estagio avançado
 	private boolean imunosupresssao;
@@ -11,10 +11,10 @@ public class Condicoes {
 	private boolean puerpera;
 	private boolean gestante;
 	
-	public int getId_condicoes() {
+	public long getId_condicoes() {
 		return id_condicoes;
 	}
-	public void setId_condicoes(int id_condicoes) {
+	public void setId_condicoes(long id_condicoes) {
 		this.id_condicoes = id_condicoes;
 	}
 	public boolean isDRCD() {

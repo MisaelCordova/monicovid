@@ -3,7 +3,7 @@ package saude.monitoramento.covid.model;
 import java.util.Date;
 
 public class Atendimentos {
-	private int id_atendimento;
+	private long id_atendimento;
 	private Date fimsintoma;
 	private String Localtrabalho;
 	private boolean  outroteste;
@@ -12,10 +12,10 @@ public class Atendimentos {
 	private Date fim_atestado;
 	private String Desfeixo; //criar enum
 	
-	public int getId_atendimento() {
+	public long getId_atendimento() {
 		return id_atendimento;
 	}
-	public void setId_atendimento(int id_atendimento) {
+	public void setId_atendimento(long id_atendimento) {
 		this.id_atendimento = id_atendimento;
 	}
 	public Date getFimsintoma() {

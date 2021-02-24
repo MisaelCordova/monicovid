@@ -3,16 +3,16 @@ package saude.monitoramento.covid.model;
 import java.util.Date;
 
 public class Ligacacoes {
-	private int id_ligacao;
+	private long id_ligacao;
 	private String atendente;
 	private Date data;
 	private String sintomas;
 	private String Evolução; //criar enum
 	
-	public int getId_ligacao() {
+	public long getId_ligacao() {
 		return id_ligacao;
 	}
-	public void setId_ligacao(int id_ligacao) {
+	public void setId_ligacao(long id_ligacao) {
 		this.id_ligacao = id_ligacao;
 	}
 	public String getAtendente() {

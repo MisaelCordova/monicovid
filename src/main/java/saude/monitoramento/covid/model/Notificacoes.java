@@ -3,7 +3,7 @@ package saude.monitoramento.covid.model;
 import java.util.Date;
 
 public class Notificacoes {
-	private int id_notificacao;
+	private long id_notificacao;
 	private Date datanotificacao;
 	private String tp_teste; //Botar enum
 	private String resultado; //Botar Enum
@@ -12,10 +12,10 @@ public class Notificacoes {
 	private String laudo; //trocar tipo para receber arquivo imagem e pdf
 	private String laboratorio;
 	private Date Ini_sintomas;
-	public int getId_notificacao() {
+	public long getId_notificacao() {
 		return id_notificacao;
 	}
-	public void setId_notificacao(int id_notificacao) {
+	public void setId_notificacao(long id_notificacao) {
 		this.id_notificacao = id_notificacao;
 	}
 	public Date getDatanotificacao() {

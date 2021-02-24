@@ -1,7 +1,7 @@
 package saude.monitoramento.covid.model;
 
 public class Sintomas {
-	private int id_sintoma;
+	private long id_sintoma;
 	private boolean dorgarganta;
 	private boolean dispineia;
 	private boolean febre;
@@ -11,10 +11,10 @@ public class Sintomas {
 	private boolean assintomatico;
 	private String outros;
 	
-	public int getId_sintoma() {
+	public long getId_sintoma() {
 		return id_sintoma;
 	}
-	public void setId_sintoma(int id_sintoma) {
+	public void setId_sintoma(long id_sintoma) {
 		this.id_sintoma = id_sintoma;
 	}
 	public boolean isDorgarganta() {
