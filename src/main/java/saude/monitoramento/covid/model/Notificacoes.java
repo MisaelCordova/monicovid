@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -30,6 +31,9 @@ public class Notificacoes {
 	private String laudo; //trocar tipo para receber arquivo imagem e pdf
 	
 	private String laboratorio;
+	
+	@ManyToOne
+	private Pacientes pacientes;
 	
 	@NotBlank(message="Preenchimento Obrigatorio")
 	private Date Ini_sintomas;

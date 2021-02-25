@@ -2,9 +2,12 @@ package saude.monitoramento.covid.model;
 
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -23,10 +26,21 @@ public class Ligacacoes {
 	private String sintomas;
 	
 	@NotBlank(message="Preenchimento Obrigatorio")
-	private String Evolução; //criar enum
+	@Enumerated(EnumType.STRING)
+	private Evolucao evolucao; 
+	
+	@ManyToOne
+	private Atendimentos atendimetos;
+	
 	
 	public long getId_ligacao() {
 		return id_ligacao;
+	}
+	public Atendimentos getAtendimetos() {
+		return atendimetos;
+	}
+	public void setAtendimetos(Atendimentos atendimetos) {
+		this.atendimetos = atendimetos;
 	}
 	public void setId_ligacao(long id_ligacao) {
 		this.id_ligacao = id_ligacao;
@@ -49,11 +63,12 @@ public class Ligacacoes {
 	public void setSintomas(String sintomas) {
 		this.sintomas = sintomas;
 	}
-	public String getEvolução() {
-		return Evolução;
+	public Evolucao getEvolucao() {
+		return evolucao;
 	}
-	public void setEvolução(String evolução) {
-		Evolução = evolução;
+	public void setEvolucao(Evolucao evolucao) {
+		this.evolucao = evolucao;
 	}
+	
 	
 }

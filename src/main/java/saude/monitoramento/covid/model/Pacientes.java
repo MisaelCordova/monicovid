@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -28,12 +29,41 @@ public class Pacientes {
     private String Nomemae;
     private char sexo;
     
-    public long getPaciente() {
+    @OneToOne
+    private Condicoes condicoes;
+    
+    @OneToOne
+    private Sintomas sintomas;
+    
+    @OneToOne
+    private Atendimentos atendimentos;
+    
+    
+    public long getId_paciente() {
 		return id_paciente;
 	}
-	public void setPaciente(long paciente) {
-		this.id_paciente = paciente;
+	public void setId_paciente(long id_paciente) {
+		this.id_paciente = id_paciente;
 	}
+	public Condicoes getCondicoes() {
+		return condicoes;
+	}
+	public void setCondicoes(Condicoes condicoes) {
+		this.condicoes = condicoes;
+	}
+	public Sintomas getSintomas() {
+		return sintomas;
+	}
+	public void setSintomas(Sintomas sintomas) {
+		this.sintomas = sintomas;
+	}
+	public Atendimentos getAtendimentos() {
+		return atendimentos;
+	}
+	public void setAtendimentos(Atendimentos atendimentos) {
+		this.atendimentos = atendimentos;
+	}
+	
 	public boolean isTemCPF() {
 		return temCPF;
 	}
