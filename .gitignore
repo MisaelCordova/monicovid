@@ -12,6 +12,73 @@ target/
 .settings
 .springBeans
 .sts4-cache
+.md
+mvnw
+.cmd
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@MisaelCordova 
+MisaelCordova
+/
+monicovid
+Private
+1
+00
+Code
+Issues
+Pull requests
+Actions
+Projects
+Security
+Insights
+Settings
+monicovid/.gitignore
+@MisaelCordova
+MisaelCordova fix gitignore
+Latest commit 9671cb2 on 24 Feb
+ History
+ 1 contributor
+55 lines (48 sloc)  549 Bytes
+ 
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
 #add for me#
 *.class
 .DS_Store
@@ -52,4 +119,17 @@ build/
 ### VS Code ###
 .vscode/
 
+
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
 

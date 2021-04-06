@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-public class Ligacacoes {
+public class Ligacoes {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private long id_ligacao;
@@ -30,17 +30,17 @@ public class Ligacacoes {
 	private Evolucao evolucao; 
 	
 	@ManyToOne
-	private Atendimentos atendimetos;
+	private Atendimentos atendimentos;
 	
 	
 	public long getId_ligacao() {
 		return id_ligacao;
 	}
 	public Atendimentos getAtendimetos() {
-		return atendimetos;
+		return atendimentos;
 	}
 	public void setAtendimetos(Atendimentos atendimetos) {
-		this.atendimetos = atendimetos;
+		this.atendimentos = atendimetos;
 	}
 	public void setId_ligacao(long id_ligacao) {
 		this.id_ligacao = id_ligacao;
