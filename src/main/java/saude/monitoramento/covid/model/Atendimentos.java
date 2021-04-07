@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 @Entity
 public class Atendimentos {
@@ -26,6 +28,11 @@ public class Atendimentos {
 	@NotBlank(message="Preenchimento Obrigatorio")
 	private String Desfeixo; //criar enum
 	
+	@OneToOne
+	private Pacientes pacientes;
+	
+	@ManyToOne
+	private Ligacoes Ligacoes;
 	
 	public long getId_atendimento() {
 		return id_atendimento;

@@ -36,11 +36,11 @@ public class Ligacoes {
 	public long getId_ligacao() {
 		return id_ligacao;
 	}
-	public Atendimentos getAtendimetos() {
+	public Atendimentos getAtendimentos() {
 		return atendimentos;
 	}
-	public void setAtendimetos(Atendimentos atendimetos) {
-		this.atendimentos = atendimetos;
+	public void setAtendimentos(Atendimentos atendimentos) {
+		this.atendimentos = atendimentos;
 	}
 	public void setId_ligacao(long id_ligacao) {
 		this.id_ligacao = id_ligacao;
