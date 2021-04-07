@@ -7,7 +7,8 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-public class Condicoes {
+public class Condicao {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id_condicoes;
@@ -35,6 +36,32 @@ public class Condicoes {
 	
 	@NotBlank(message="Preenchimento Obrigatorio")
 	private boolean gestante;
+	
+	
+	
+	public Condicao() {
+	
+	}
+
+	public Condicao(long id_condicoes, @NotBlank(message = "Preenchimento Obrigatorio") boolean dRCD,
+			@NotBlank(message = "Preenchimento Obrigatorio") boolean dCC,
+			@NotBlank(message = "Preenchimento Obrigatorio") boolean diabetes,
+			@NotBlank(message = "Preenchimento Obrigatorio") boolean dRCEA,
+			@NotBlank(message = "Preenchimento Obrigatorio") boolean imunosupresssao,
+			@NotBlank(message = "Preenchimento Obrigatorio") boolean obesidade,
+			@NotBlank(message = "Preenchimento Obrigatorio") boolean puerpera,
+			@NotBlank(message = "Preenchimento Obrigatorio") boolean gestante) {
+	
+		this.id_condicoes = id_condicoes;
+		DRCD = dRCD;
+		DCC = dCC;
+		this.diabetes = diabetes;
+		DRCEA = dRCEA;
+		this.imunosupresssao = imunosupresssao;
+		this.obesidade = obesidade;
+		this.puerpera = puerpera;
+		this.gestante = gestante;
+	}
 	
 	public long getId_condicoes() {
 		return id_condicoes;
@@ -90,6 +117,14 @@ public class Condicoes {
 	public void setGestante(boolean gestante) {
 		this.gestante = gestante;
 	}
+
+	@Override
+	public String toString() {
+		return "Condicao [id_condicoes=" + id_condicoes + ", DRCD=" + DRCD + ", DCC=" + DCC + ", diabetes=" + diabetes
+				+ ", DRCEA=" + DRCEA + ", imunosupresssao=" + imunosupresssao + ", obesidade=" + obesidade
+				+ ", puerpera=" + puerpera + ", gestante=" + gestante + "]";
+	}
+	
 	
 }
 

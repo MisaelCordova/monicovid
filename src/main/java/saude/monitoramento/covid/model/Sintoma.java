@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 
 @Entity
-public class Sintomas {
+public class Sintoma {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id_sintoma;
@@ -21,6 +21,22 @@ public class Sintomas {
 	private boolean assintomatico;
 	private String outros;
 	
+	public Sintoma() {
+		
+	}
+	
+	public Sintoma(long id_sintoma, boolean dorgarganta, boolean dispineia, boolean febre, boolean dorcabeca,
+			boolean disturgustivo, boolean coriza, boolean assintomatico, String outros) {
+		this.id_sintoma = id_sintoma;
+		this.dorgarganta = dorgarganta;
+		this.dispineia = dispineia;
+		this.febre = febre;
+		this.dorcabeca = dorcabeca;
+		this.disturgustivo = disturgustivo;
+		this.coriza = coriza;
+		this.assintomatico = assintomatico;
+		this.outros = outros;
+	}
 	public long getId_sintoma() {
 		return id_sintoma;
 	}
@@ -75,6 +91,14 @@ public class Sintomas {
 	public void setOutros(String outros) {
 		this.outros = outros;
 	}
+
+	@Override
+	public String toString() {
+		return "Sintoma [id_sintoma=" + id_sintoma + ", dorgarganta=" + dorgarganta + ", dispineia=" + dispineia
+				+ ", febre=" + febre + ", dorcabeca=" + dorcabeca + ", disturgustivo=" + disturgustivo + ", coriza="
+				+ coriza + ", assintomatico=" + assintomatico + ", outros=" + outros + "]";
+	}
+	
 	
    
 }

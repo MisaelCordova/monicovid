@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-public class Ligacoes {
+public class Ligacao {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private long id_ligacao;
@@ -30,16 +30,30 @@ public class Ligacoes {
 	private Evolucao evolucao; 
 	
 	@ManyToOne
-	private Atendimentos atendimentos;
+	private Atendimento atendimentos;
 	
-	
+	public Ligacao() {
+		
+	}
+	public Ligacao(long id_ligacao, @NotBlank(message = "Preenchimento Obrigatorio") String atendente,
+			@NotBlank(message = "Preenchimento Obrigatorio") Date data,
+			@NotBlank(message = "Preenchimento Obrigatorio") String sintomas,
+			@NotBlank(message = "Preenchimento Obrigatorio") Evolucao evolucao, Atendimento atendimentos) {
+		
+		this.id_ligacao = id_ligacao;
+		this.atendente = atendente;
+		this.data = data;
+		this.sintomas = sintomas;
+		this.evolucao = evolucao;
+		this.atendimentos = atendimentos;
+	}
 	public long getId_ligacao() {
 		return id_ligacao;
 	}
-	public Atendimentos getAtendimentos() {
+	public Atendimento getAtendimentos() {
 		return atendimentos;
 	}
-	public void setAtendimentos(Atendimentos atendimentos) {
+	public void setAtendimentos(Atendimento atendimentos) {
 		this.atendimentos = atendimentos;
 	}
 	public void setId_ligacao(long id_ligacao) {
@@ -68,6 +82,11 @@ public class Ligacoes {
 	}
 	public void setEvolucao(Evolucao evolucao) {
 		this.evolucao = evolucao;
+	}
+	@Override
+	public String toString() {
+		return "Ligacao [id_ligacao=" + id_ligacao + ", atendente=" + atendente + ", data=" + data + ", sintomas="
+				+ sintomas + ", evolucao=" + evolucao + ", atendimentos=" + atendimentos + "]";
 	}
 	
 	

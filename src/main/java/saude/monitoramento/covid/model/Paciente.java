@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-public class Pacientes {
+public class Paciente {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id_paciente;
@@ -31,39 +31,66 @@ public class Pacientes {
     private char sexo;
     
     @OneToOne
-    private Condicoes condicoes;
+    private Condicao condicoes;
     
     @OneToOne
-    private Sintomas sintomas;
+    private Sintoma sintomas;
     
     @OneToOne
-    private Atendimentos atendimentos;
+    private Atendimento atendimentos;
     
     @ManyToOne
-    private Notificacoes notificacoes;
+    private Notificacao notificacoes;
     
-    public long getId_paciente() {
+    
+    public Paciente() {
+    	
+    }
+    
+    public Paciente(long id_paciente, boolean temCPF, int cNS,
+			@NotBlank(message = "Data de Nascimento Obrigatoria") Date dateNasc,
+			@NotBlank(message = "Nome Obrigatorio") String nome, String bairro, int telefone, boolean profisSaude,
+			int cPF, String nomemae, char sexo, Condicao condicoes, Sintoma sintomas, Atendimento atendimentos,
+			Notificacao notificacoes) {
+		
+		this.id_paciente = id_paciente;
+		this.temCPF = temCPF;
+		CNS = cNS;
+		this.dateNasc = dateNasc;
+		this.nome = nome;
+		this.bairro = bairro;
+		this.telefone = telefone;
+		this.profisSaude = profisSaude;
+		CPF = cPF;
+		Nomemae = nomemae;
+		this.sexo = sexo;
+		this.condicoes = condicoes;
+		this.sintomas = sintomas;
+		this.atendimentos = atendimentos;
+		this.notificacoes = notificacoes;
+	}
+	public long getId_paciente() {
 		return id_paciente;
 	}
 	public void setId_paciente(long id_paciente) {
 		this.id_paciente = id_paciente;
 	}
-	public Condicoes getCondicoes() {
+	public Condicao getCondicoes() {
 		return condicoes;
 	}
-	public void setCondicoes(Condicoes condicoes) {
+	public void setCondicoes(Condicao condicoes) {
 		this.condicoes = condicoes;
 	}
-	public Sintomas getSintomas() {
+	public Sintoma getSintomas() {
 		return sintomas;
 	}
-	public void setSintomas(Sintomas sintomas) {
+	public void setSintomas(Sintoma sintomas) {
 		this.sintomas = sintomas;
 	}
-	public Atendimentos getAtendimentos() {
+	public Atendimento getAtendimentos() {
 		return atendimentos;
 	}
-	public void setAtendimentos(Atendimentos atendimentos) {
+	public void setAtendimentos(Atendimento atendimentos) {
 		this.atendimentos = atendimentos;
 	}
 	
@@ -124,6 +151,8 @@ public class Pacientes {
 	public char getSexo() {
 		return sexo;
 	}
+
+
 	public void setSexo(char sexo) {
 		this.sexo = sexo;
 	}
@@ -145,7 +174,7 @@ public class Pacientes {
 				return false;
 			if (getClass() != obj.getClass())
 				return false;
-			Pacientes other = (Pacientes) obj;
+			Paciente other = (Paciente) obj;
 			if (dateNasc == null) {
 				if (other.dateNasc != null)
 					return false;
@@ -159,5 +188,12 @@ public class Pacientes {
 			return true;
 		}
 	
+		@Override
+		public String toString() {
+			return "Pacientes [id_paciente=" + id_paciente + ", temCPF=" + temCPF + ", CNS=" + CNS + ", dateNasc="
+					+ dateNasc + ", nome=" + nome + ", bairro=" + bairro + ", telefone=" + telefone + ", profisSaude="
+					+ profisSaude + ", CPF=" + CPF + ", Nomemae=" + Nomemae + ", sexo=" + sexo + ", condicoes=" + condicoes
+					+ ", sintomas=" + sintomas + ", atendimentos=" + atendimentos + ", notificacoes=" + notificacoes + "]";
+		}
 	
 }

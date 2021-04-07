@@ -3,9 +3,9 @@ package saude.monitoramento.covid.Repository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import saude.monitoramento.covid.model.Sintomas;
+import saude.monitoramento.covid.model.Paciente;
 
 @Repository
-public interface SintomasRepository extends CrudRepository<Sintomas, Long>{
-
+public interface PacienteRepository extends CrudRepository<Paciente, Long>{
+	
 }

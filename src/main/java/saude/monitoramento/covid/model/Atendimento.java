@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 @Entity
-public class Atendimentos {
+public class Atendimento {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private long id_atendimento;
@@ -29,11 +29,30 @@ public class Atendimentos {
 	private String Desfeixo; //criar enum
 	
 	@OneToOne
-	private Pacientes pacientes;
+	private Paciente pacientes;
 	
 	@ManyToOne
-	private Ligacoes Ligacoes;
+	private Ligacao Ligacoes;
 	
+	public Atendimento() {
+	
+	}
+	public Atendimento(long id_atendimento, Date fimsintoma, String localtrabalho,
+			@NotBlank(message = "Preenchimento Obrigatorio") boolean outroteste, boolean atestadomedico,
+			Date ini_atatestado, Date fim_atestado, @NotBlank(message = "Preenchimento Obrigatorio") String desfeixo,
+			Paciente pacientes, saude.monitoramento.covid.model.Ligacao ligacoes) {
+		super();
+		this.id_atendimento = id_atendimento;
+		this.fimsintoma = fimsintoma;
+		Localtrabalho = localtrabalho;
+		this.outroteste = outroteste;
+		this.atestadomedico = atestadomedico;
+		this.ini_atatestado = ini_atatestado;
+		this.fim_atestado = fim_atestado;
+		Desfeixo = desfeixo;
+		this.pacientes = pacientes;
+		Ligacoes = ligacoes;
+	}
 	public long getId_atendimento() {
 		return id_atendimento;
 	}
@@ -82,6 +101,15 @@ public class Atendimentos {
 	public void setDesfeixo(String desfeixo) {
 		Desfeixo = desfeixo;
 	}
+	
+	@Override
+	public String toString() {
+		return "Atendimento [id_atendimento=" + id_atendimento + ", fimsintoma=" + fimsintoma + ", Localtrabalho="
+				+ Localtrabalho + ", outroteste=" + outroteste + ", atestadomedico=" + atestadomedico
+				+ ", ini_atatestado=" + ini_atatestado + ", fim_atestado=" + fim_atestado + ", Desfeixo=" + Desfeixo
+				+ ", pacientes=" + pacientes + ", Ligacoes=" + Ligacoes + "]";
+	}
+	
 	
 	
 }

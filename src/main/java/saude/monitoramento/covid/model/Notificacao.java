@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-public class Notificacoes {
+public class Notificacao {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id_notificacao;
@@ -33,10 +33,32 @@ public class Notificacoes {
 	private String laboratorio;
 	
 	@ManyToOne
-	private Pacientes pacientes;
+	private Paciente pacientes;
 	
 	@NotBlank(message="Preenchimento Obrigatorio")
 	private Date Ini_sintomas;
+	
+	public Notificacao() {
+		
+	}
+	
+	public Notificacao(long id_notificacao, @NotBlank(message = "Preenchimento Obrigatorio") Date datanotificacao,
+			String tp_teste, @NotBlank(message = "Preenchimento Obrigatorio") String resultado,
+			@NotBlank(message = "Preenchimento Obrigatorio") Date dt_notificacao,
+			@NotBlank(message = "Preenchimento Obrigatorio") Date dt_teste, String laudo, String laboratorio,
+			Paciente pacientes, @NotBlank(message = "Preenchimento Obrigatorio") Date ini_sintomas) {
+
+		this.id_notificacao = id_notificacao;
+		this.datanotificacao = datanotificacao;
+		this.tp_teste = tp_teste;
+		this.resultado = resultado;
+		this.dt_notificacao = dt_notificacao;
+		this.dt_teste = dt_teste;
+		this.laudo = laudo;
+		this.laboratorio = laboratorio;
+		this.pacientes = pacientes;
+		Ini_sintomas = ini_sintomas;
+	}
 	public long getId_notificacao() {
 		return id_notificacao;
 	}
@@ -91,6 +113,15 @@ public class Notificacoes {
 	public void setIni_sintomas(Date ini_sintomas) {
 		Ini_sintomas = ini_sintomas;
 	}
+
+	@Override
+	public String toString() {
+		return "Notificacao [id_notificacao=" + id_notificacao + ", datanotificacao=" + datanotificacao + ", tp_teste="
+				+ tp_teste + ", resultado=" + resultado + ", dt_notificacao=" + dt_notificacao + ", dt_teste="
+				+ dt_teste + ", laudo=" + laudo + ", laboratorio=" + laboratorio + ", pacientes=" + pacientes
+				+ ", Ini_sintomas=" + Ini_sintomas + "]";
+	}
+	
 	
 	
 }
