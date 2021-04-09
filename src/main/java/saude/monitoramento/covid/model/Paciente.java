@@ -1,6 +1,8 @@
 package saude.monitoramento.covid.model;
 
+
 import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +17,7 @@ public class Paciente {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id_paciente;
 	private boolean temCPF;
-	private int CNS;
+	private long CNS;
 	
 	@NotBlank(message = "Data de Nascimento Obrigatoria")
     private Date dateNasc;
@@ -24,9 +26,9 @@ public class Paciente {
     private String nome;
   
 	private String bairro;
-    private int telefone;
+    private long telefone;
     private boolean profisSaude;
-    private int CPF;
+    private long CPF;
     private String Nomemae;
     private char sexo;
     
@@ -47,10 +49,10 @@ public class Paciente {
     	
     }
     
-    public Paciente(long id_paciente, boolean temCPF, int cNS,
+    public Paciente(long id_paciente, boolean temCPF, long cNS,
 			@NotBlank(message = "Data de Nascimento Obrigatoria") Date dateNasc,
-			@NotBlank(message = "Nome Obrigatorio") String nome, String bairro, int telefone, boolean profisSaude,
-			int cPF, String nomemae, char sexo, Condicao condicoes, Sintoma sintomas, Atendimento atendimentos,
+			@NotBlank(message = "Nome Obrigatorio") String nome, String bairro, long telefone, boolean profisSaude,
+			long cPF, String nomemae, char sexo, Condicao condicoes, Sintoma sintomas, Atendimento atendimentos,
 			Notificacao notificacoes) {
 		
 		this.id_paciente = id_paciente;
@@ -69,6 +71,7 @@ public class Paciente {
 		this.atendimentos = atendimentos;
 		this.notificacoes = notificacoes;
 	}
+
 	public long getId_paciente() {
 		return id_paciente;
 	}
@@ -100,10 +103,10 @@ public class Paciente {
 	public void setTemCPF(boolean temCPF) {
 		this.temCPF = temCPF;
 	}
-	public int getCNS() {
+	public long getCNS() {
 		return CNS;
 	}
-	public void setCNS(int cNS) {
+	public void setCNS(long cNS) {
 		CNS = cNS;
 	}
 	public Date getDateNasc() {
@@ -124,10 +127,10 @@ public class Paciente {
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
-	public int getTelefone() {
+	public long getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(int telefone) {
+	public void setTelefone(long telefone) {
 		this.telefone = telefone;
 	}
 	public boolean isProfisSaude() {
@@ -136,10 +139,10 @@ public class Paciente {
 	public void setProfisSaude(boolean profisSaude) {
 		this.profisSaude = profisSaude;
 	}
-	public int getCPF() {
+	public long getCPF() {
 		return CPF;
 	}
-	public void setCPF(int cPF) {
+	public void setCPF(long cPF) {
 		CPF = cPF;
 	}
 	public String getNomemae() {
@@ -187,6 +190,8 @@ public class Paciente {
 				return false;
 			return true;
 		}
+	
+		
 	
 		@Override
 		public String toString() {
