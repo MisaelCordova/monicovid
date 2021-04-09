@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -32,8 +31,7 @@ public class Notificacao {
 	
 	private String laboratorio;
 	
-	@ManyToOne
-	private Paciente pacientes;
+
 	
 	@NotBlank(message="Preenchimento Obrigatorio")
 	private Date Ini_sintomas;
@@ -56,7 +54,6 @@ public class Notificacao {
 		this.dt_teste = dt_teste;
 		this.laudo = laudo;
 		this.laboratorio = laboratorio;
-		this.pacientes = pacientes;
 		Ini_sintomas = ini_sintomas;
 	}
 	public long getId_notificacao() {
@@ -118,10 +115,11 @@ public class Notificacao {
 	public String toString() {
 		return "Notificacao [id_notificacao=" + id_notificacao + ", datanotificacao=" + datanotificacao + ", tp_teste="
 				+ tp_teste + ", resultado=" + resultado + ", dt_notificacao=" + dt_notificacao + ", dt_teste="
-				+ dt_teste + ", laudo=" + laudo + ", laboratorio=" + laboratorio + ", pacientes=" + pacientes
-				+ ", Ini_sintomas=" + Ini_sintomas + "]";
+				+ dt_teste + ", laudo=" + laudo + ", laboratorio=" + laboratorio + ", Ini_sintomas=" + Ini_sintomas
+				+ "]";
 	}
-	
+
+
 	
 	
 }
