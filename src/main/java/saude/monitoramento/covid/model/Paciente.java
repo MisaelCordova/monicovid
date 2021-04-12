@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
@@ -34,22 +36,50 @@ public class Paciente {
     private String Nomemae;
     private char sexo;
     
-    @OneToOne
+    @OneToOne (mappedBy = "paciente",fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private Condicao condicoes;
     
-    @OneToOne
+    @OneToOne(mappedBy = "paciente",fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private Sintoma sintomas;
     
-    @OneToOne
+    @OneToOne (mappedBy = "paciente",fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private Atendimento atendimentos;
     
-    @ManyToOne
+    @OneToMany (mappedBy = "paciente",fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private List<Notificacao> notificacoes = new ArrayList<>();
     
     
     public Paciente() {
     	
     }
+    
+
+
+	public Paciente(boolean temCPF, long cNS, @NotBlank(message = "Data de Nascimento Obrigatoria") Date dateNasc,
+			@NotBlank(message = "Nome Obrigatorio") String nome, String bairro, long telefone, boolean profisSaude,
+			long cPF, String nomemae, char sexo, Condicao condicoes, Sintoma sintomas, Atendimento atendimentos,
+			List<Notificacao> notificacoes) {
+		super();
+		this.temCPF = temCPF;
+		CNS = cNS;
+		this.dateNasc = dateNasc;
+		this.nome = nome;
+		this.bairro = bairro;
+		this.telefone = telefone;
+		this.profisSaude = profisSaude;
+		CPF = cPF;
+		Nomemae = nomemae;
+		this.sexo = sexo;
+		this.condicoes = condicoes;
+		this.sintomas = sintomas;
+		this.atendimentos = atendimentos;
+		this.notificacoes = notificacoes;
+	}
+
 
 
 	public long getId_paciente() {

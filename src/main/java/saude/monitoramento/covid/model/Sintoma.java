@@ -1,9 +1,14 @@
 package saude.monitoramento.covid.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+
 
 
 @Entity
@@ -21,13 +26,18 @@ public class Sintoma {
 	private boolean assintomatico;
 	private String outros;
 	
+	@OneToOne(fetch = FetchType.LAZY,optional = false)
+	@JoinColumn(name="id_paciente", nullable = false)
+	private Paciente paciente;
+	
 	public Sintoma() {
 		
 	}
 	
-	public Sintoma(long id_sintoma, boolean dorgarganta, boolean dispineia, boolean febre, boolean dorcabeca,
-			boolean disturgustivo, boolean coriza, boolean assintomatico, String outros) {
-		this.id_sintoma = id_sintoma;
+	
+	public Sintoma(boolean dorgarganta, boolean dispineia, boolean febre, boolean dorcabeca, boolean disturgustivo,
+			boolean coriza, boolean assintomatico, String outros) {
+		super();
 		this.dorgarganta = dorgarganta;
 		this.dispineia = dispineia;
 		this.febre = febre;
@@ -37,6 +47,8 @@ public class Sintoma {
 		this.assintomatico = assintomatico;
 		this.outros = outros;
 	}
+
+
 	public long getId_sintoma() {
 		return id_sintoma;
 	}

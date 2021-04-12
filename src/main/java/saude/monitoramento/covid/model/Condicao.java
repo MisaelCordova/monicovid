@@ -1,9 +1,12 @@
 package saude.monitoramento.covid.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -37,13 +40,19 @@ public class Condicao {
 	@NotBlank(message="Preenchimento Obrigatorio")
 	private boolean gestante;
 	
+	@OneToOne(fetch = FetchType.LAZY,optional = true)
+	@JoinColumn(name="id_paciente",nullable = false)
+	private Paciente paciente;
+	
 	
 	
 	public Condicao() {
 	
 	}
+	
+	
 
-	public Condicao(long id_condicoes, @NotBlank(message = "Preenchimento Obrigatorio") boolean dRCD,
+	public Condicao(@NotBlank(message = "Preenchimento Obrigatorio") boolean dRCD,
 			@NotBlank(message = "Preenchimento Obrigatorio") boolean dCC,
 			@NotBlank(message = "Preenchimento Obrigatorio") boolean diabetes,
 			@NotBlank(message = "Preenchimento Obrigatorio") boolean dRCEA,
@@ -51,8 +60,7 @@ public class Condicao {
 			@NotBlank(message = "Preenchimento Obrigatorio") boolean obesidade,
 			@NotBlank(message = "Preenchimento Obrigatorio") boolean puerpera,
 			@NotBlank(message = "Preenchimento Obrigatorio") boolean gestante) {
-	
-		this.id_condicoes = id_condicoes;
+		super();
 		DRCD = dRCD;
 		DCC = dCC;
 		this.diabetes = diabetes;
@@ -62,7 +70,9 @@ public class Condicao {
 		this.puerpera = puerpera;
 		this.gestante = gestante;
 	}
-	
+
+
+
 	public long getId_condicoes() {
 		return id_condicoes;
 	}

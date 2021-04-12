@@ -25,15 +25,16 @@ public class Usuario {
 		
 	}
 	
-	public Usuario(long id_usuario, @NotBlank(message = "Nome Obrigatorio") String nome,
+
+	public Usuario(@NotBlank(message = "Nome Obrigatorio") String nome,
 			@NotBlank(message = "Email Obrigatorio") String email,
 			@NotBlank(message = "Senha Obrigatoria") String senha) {
 		super();
-		this.id_usuario = id_usuario;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
 	}
+
 
 
 

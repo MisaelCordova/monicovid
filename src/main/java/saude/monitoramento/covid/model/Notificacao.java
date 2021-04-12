@@ -2,9 +2,12 @@ package saude.monitoramento.covid.model;
 
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -31,7 +34,9 @@ public class Notificacao {
 	
 	private String laboratorio;
 	
-
+	@ManyToOne(fetch = FetchType.LAZY,optional = false)
+	@JoinColumn(name = "id_paciente",nullable = false)
+	private Paciente paciente; 
 	
 	@NotBlank(message="Preenchimento Obrigatorio")
 	private Date Ini_sintomas;
@@ -39,14 +44,13 @@ public class Notificacao {
 	public Notificacao() {
 		
 	}
-	
-	public Notificacao(long id_notificacao, @NotBlank(message = "Preenchimento Obrigatorio") Date datanotificacao,
-			String tp_teste, @NotBlank(message = "Preenchimento Obrigatorio") String resultado,
+
+	public Notificacao(@NotBlank(message = "Preenchimento Obrigatorio") Date datanotificacao, String tp_teste,
+			@NotBlank(message = "Preenchimento Obrigatorio") String resultado,
 			@NotBlank(message = "Preenchimento Obrigatorio") Date dt_notificacao,
 			@NotBlank(message = "Preenchimento Obrigatorio") Date dt_teste, String laudo, String laboratorio,
-			Paciente pacientes, @NotBlank(message = "Preenchimento Obrigatorio") Date ini_sintomas) {
-
-		this.id_notificacao = id_notificacao;
+			@NotBlank(message = "Preenchimento Obrigatorio") Date ini_sintomas) {
+		super();
 		this.datanotificacao = datanotificacao;
 		this.tp_teste = tp_teste;
 		this.resultado = resultado;
@@ -56,6 +60,7 @@ public class Notificacao {
 		this.laboratorio = laboratorio;
 		Ini_sintomas = ini_sintomas;
 	}
+
 	public long getId_notificacao() {
 		return id_notificacao;
 	}

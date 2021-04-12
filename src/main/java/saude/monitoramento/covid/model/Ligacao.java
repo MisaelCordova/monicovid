@@ -2,13 +2,14 @@ package saude.monitoramento.covid.model;
 
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+
 
 @Entity
 public class Ligacao {
@@ -25,12 +26,12 @@ public class Ligacao {
 	@NotBlank(message="Preenchimento Obrigatorio")
 	private String sintomas;
 	
-	@NotBlank(message="Preenchimento Obrigatorio")
-	@Enumerated(EnumType.STRING)
-	private Evolucao evolucao; 
 	
-	@ManyToOne
+	
+	@ManyToOne (fetch = FetchType.LAZY,optional = false)
+	@JoinColumn(name = "id_atendimento")
 	private Atendimento atendimentos;
+	
 	
 	public Ligacao() {
 		
@@ -44,18 +45,12 @@ public class Ligacao {
 		this.atendente = atendente;
 		this.data = data;
 		this.sintomas = sintomas;
-		this.evolucao = evolucao;
-		this.atendimentos = atendimentos;
-	}
+		}
 	public long getId_ligacao() {
 		return id_ligacao;
 	}
-	public Atendimento getAtendimentos() {
-		return atendimentos;
-	}
-	public void setAtendimentos(Atendimento atendimentos) {
-		this.atendimentos = atendimentos;
-	}
+
+	
 	public void setId_ligacao(long id_ligacao) {
 		this.id_ligacao = id_ligacao;
 	}
@@ -77,16 +72,10 @@ public class Ligacao {
 	public void setSintomas(String sintomas) {
 		this.sintomas = sintomas;
 	}
-	public Evolucao getEvolucao() {
-		return evolucao;
-	}
-	public void setEvolucao(Evolucao evolucao) {
-		this.evolucao = evolucao;
-	}
 	@Override
 	public String toString() {
 		return "Ligacao [id_ligacao=" + id_ligacao + ", atendente=" + atendente + ", data=" + data + ", sintomas="
-				+ sintomas + ", evolucao=" + evolucao + ", atendimentos=" + atendimentos + "]";
+				+ sintomas + ", atendimento=" + atendimentos + "]";
 	}
 	
 	
