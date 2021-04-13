@@ -33,7 +33,7 @@ public class Atendimento {
 	
 	@NotBlank(message="Preenchimento Obrigatorio")
 	@Enumerated(EnumType.STRING)
-	private Evolucao evolucao; 
+	private Desfeixo desfeixo; 
 	
 	@OneToOne(fetch = FetchType.LAZY,optional = false)
 	@JoinColumn(name="id_paciente", nullable = false)	
@@ -45,33 +45,21 @@ public class Atendimento {
 	public Atendimento() {
 	
 	}
-	
 
 	public Atendimento(Date fimsintoma, String localtrabalho,
 			@NotBlank(message = "Preenchimento Obrigatorio") boolean outroteste, boolean atestadomedico,
-			Date ini_atatestado, Date fim_atestado, @NotBlank(message = "Preenchimento Obrigatorio") Evolucao evolucao,
+			Date ini_atatestado, Date fim_atestado, @NotBlank(message = "Preenchimento Obrigatorio") Desfeixo desfeixo,
 			Paciente paciente, List<Ligacao> ligacoes) {
-		super();
-		this.fimsintoma = fimsintoma;
+			this.fimsintoma = fimsintoma;
 		Localtrabalho = localtrabalho;
 		this.outroteste = outroteste;
 		this.atestadomedico = atestadomedico;
 		this.ini_atatestado = ini_atatestado;
 		this.fim_atestado = fim_atestado;
-		this.evolucao = evolucao;
+		this.desfeixo = desfeixo;
 		this.paciente = paciente;
 		Ligacoes = ligacoes;
 	}
-
-
-
-
-
-
-
-
-
-
 
 	public long getId_atendimento() {
 		return id_atendimento;
@@ -128,19 +116,21 @@ public class Atendimento {
 	public void setFim_atestado(Date fim_atestado) {
 		this.fim_atestado = fim_atestado;
 	}
-	public Evolucao getEvolucao() {
-		return evolucao;
+
+	public Desfeixo getDesfeixo() {
+		return desfeixo;
 	}
-	public void setEvolucao(Evolucao evolucao) {
-		this.evolucao = evolucao;
-	
+
+	public void setDesfeixo(Desfeixo desfeixo) {
+		this.desfeixo = desfeixo;
 	}
+
 	public Paciente getPaciente() {
 		return paciente;
 	}
 
-	public void setPaciente(Paciente pacientes) {
-		this.paciente = pacientes;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 
 	public List<Ligacao> getLigacoes() {
@@ -151,15 +141,21 @@ public class Atendimento {
 		Ligacoes = ligacoes;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Atendimento [id_atendimento=" + id_atendimento + ", fimsintoma=" + fimsintoma + ", Localtrabalho="
 				+ Localtrabalho + ", outroteste=" + outroteste + ", atestadomedico=" + atestadomedico
-				+ ", ini_atatestado=" + ini_atatestado + ", fim_atestado=" + fim_atestado + ", evolucao=" + evolucao
+				+ ", ini_atatestado=" + ini_atatestado + ", fim_atestado=" + fim_atestado + ", desfeixo=" + desfeixo
 				+ ", paciente=" + paciente + ", Ligacoes=" + Ligacoes + "]";
 	}
+	
+
+
+
+
+
+
+
 
 	
 
