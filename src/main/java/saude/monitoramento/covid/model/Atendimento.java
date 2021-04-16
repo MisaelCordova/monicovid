@@ -15,28 +15,28 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 @Entity
 public class Atendimento {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
-	private long id_atendimento;
+	private Long id_atendimento;
 	
 	private Date fimsintoma;
 	private String Localtrabalho;
 	
-	@NotBlank(message="Preenchimento Obrigatorio")
 	private boolean  outroteste;
 	
 	private boolean atestadomedico;
 	private Date  ini_atatestado;
 	private Date fim_atestado;
 	
-	@NotBlank(message="Preenchimento Obrigatorio")
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Desfeixo desfeixo; 
 	
-	@OneToOne(fetch = FetchType.LAZY,optional = false)
-	@JoinColumn(name="id_paciente", nullable = false)	
+	@OneToOne(fetch = FetchType.LAZY,optional = true)
+	@JoinColumn(name="id_paciente", nullable = true)	
 	private Paciente paciente;
 	
 	@OneToMany(mappedBy = "atendimentos")
@@ -61,11 +61,11 @@ public class Atendimento {
 		Ligacoes = ligacoes;
 	}
 
-	public long getId_atendimento() {
+	public Long getId_atendimento() {
 		return id_atendimento;
 	}
 
-	public void setId_atendimento(long id_atendimento) {
+	public void setId_atendimento(Long id_atendimento) {
 		this.id_atendimento = id_atendimento;
 	}
 
