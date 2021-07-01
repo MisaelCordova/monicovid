@@ -1,7 +1,6 @@
 
 package saude.monitoramento.covid.model;
 
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -10,9 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
-
-import com.sun.istack.NotNull;
 
 @Entity
 public class Notificacao {
@@ -26,18 +24,18 @@ public class Notificacao {
 	private String resultado; //Botar Enum se não vier do esus
 	
 
-	@NotNull
-	private Date dt_notificacao;
+	@NotEmpty
+	private String dt_notificacao;
 	
-	@NotNull
-	private Date dt_teste;
+	@NotEmpty
+	private String dt_teste;
 	
 	private String laudo; //trocar tipo para receber arquivo imagem e pdf
 	
 	private String laboratorio;
 	
-	@NotNull
-	private Date Ini_sintomas;
+	@NotEmpty
+	private String Ini_sintomas;
 	
 	@ManyToOne(fetch = FetchType.LAZY,optional = true)
 	@JoinColumn(name = "id_paciente",nullable = true)
@@ -53,7 +51,7 @@ public class Notificacao {
 
 
 	public Notificacao(String tp_teste, @NotBlank(message = "Preenchimento Obrigatorio") String resultado,
-			Date dt_notificacao, Date dt_teste, String laudo, String laboratorio, Date ini_sintomas,
+			String dt_notificacao, String dt_teste, String laudo, String laboratorio, String ini_sintomas,
 			Paciente paciente) {
 		this.tp_teste = tp_teste;
 		this.resultado = resultado;
@@ -104,25 +102,25 @@ public class Notificacao {
 
 
 
-	public Date getDt_notificacao() {
+	public String getDt_notificacao() {
 		return dt_notificacao;
 	}
 
 
 
-	public void setDt_notificacao(Date dt_notificacao) {
+	public void setDt_notificacao(String dt_notificacao) {
 		this.dt_notificacao = dt_notificacao;
 	}
 
 
 
-	public Date getDt_teste() {
+	public String getDt_teste() {
 		return dt_teste;
 	}
 
 
 
-	public void setDt_teste(Date dt_teste) {
+	public void setDt_teste(String dt_teste) {
 		this.dt_teste = dt_teste;
 	}
 
@@ -152,13 +150,13 @@ public class Notificacao {
 
 
 
-	public Date getIni_sintomas() {
+	public String getIni_sintomas() {
 		return Ini_sintomas;
 	}
 
 
 
-	public void setIni_sintomas(Date ini_sintomas) {
+	public void setIni_sintomas(String ini_sintomas) {
 		Ini_sintomas = ini_sintomas;
 	}
 

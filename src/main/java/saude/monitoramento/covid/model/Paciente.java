@@ -1,6 +1,6 @@
 package saude.monitoramento.covid.model;
 
-import java.util.Date;
+
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,8 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
-
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 
 @Entity
@@ -27,8 +26,8 @@ public class Paciente {
 	private long CNS;
 	
 	//@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@NotNull
-    private Date dateNasc;
+	@NotEmpty
+    private String dateNasc;
     
     @NotBlank(message = "Nome Obrigatorio")
     private String nome;
@@ -63,7 +62,7 @@ public class Paciente {
     	
     }
     
-	public Paciente(boolean temCPF, long cNS, @NotBlank(message = "Data de Nascimento Obrigatoria") Date dateNasc,
+	public Paciente(boolean temCPF, long cNS, @NotBlank(message = "Data de Nascimento Obrigatoria") String dateNasc,
 			@NotBlank(message = "Nome Obrigatorio") String nome, String bairro, long telefone, boolean profisSaude,
 			long cPF, String nomemae, char sexo) {
 		this.temCPF = temCPF;
@@ -102,11 +101,11 @@ public class Paciente {
 		CNS = cNS;
 	}
 
-	public Date getDateNasc() {
+	public String getDateNasc() {
 		return dateNasc;
 	}
 
-	public void setDateNasc(Date dateNasc) {
+	public void setDateNasc(String dateNasc) {
 		this.dateNasc = dateNasc;
 	}
 

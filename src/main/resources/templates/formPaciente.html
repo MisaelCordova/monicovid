@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PacienteApp</title>
+</head>
+<body>
+	
+    <h1>Cadastro de Pacientes</h1>
+   
+    <form action="/cadastrarPaciente" method="post">
+     <div>
+    <h3>Identificação</h3>
+     <p>Tem CPF?</p>
+    <input type="radio" id="sim" name="temCPF" value="true">
+  	<label for="sim">Sim</label><br>
+  	<input type="radio" id="nao" name="temCPF" value="false">
+  	<label for="nao">Não</label>
+  	
+  	<p>É Profissional de Saúde?</p>
+  	 <input type="radio" id="sim" name="profisSaude" value="true">
+  	<label for="sim">Sim</label><br>
+  	<input type="radio" id="nao" name="profisSaude" value="false">
+  	<label for="nao">Não</label>
+  	   </br>
+   CNS: <input type="text" value="" name="CNS"/>
+   CPF: <input type="text" value="" name="CPF"/>
+   Tel: <input type="text" value="" name="telefone"/>
+   Nome completo: <input type="text" value="" name="nome"/>
+   <p>Sexo</p>
+  	<input type="radio" id="feminino" name="sexo" value="F">
+  	<label for="feminino">Feminino</label><br>
+  	<input type="radio" id="masculino" name="sexo" value="M">
+  	<label for="masculino">Masculino</label>
+  	</br>
+   Data de Nascimento: <input type="date" value="" name="dateNasc"/>
+   Nome Completo da Mãe: <input type="text" value="" name="nomemae"/>
+   Bairro: <input type="text" value="" name="bairro"/>
+   <h3>Sintomas</h3>
+   <label>
+   <input type="checkbox" name="dorgarganta"th:checked="${$flag}"/> Dor de Garganta
+   </label>
+ 	<label>
+   <input type="checkbox" name="dispineia"th:checked="${$flag}"/> Dispineia
+   </label>
+  	<label>
+   <input type="checkbox" name="febre"th:checked="${$flag}"/> Febre
+   </label>
+  	<label>
+   <input type="checkbox" name="dorcabeca"th:checked="${$flag}"/> Dor de cabeça
+   </label>
+  	<label>
+   <input type="checkbox" name="disturgustivo"th:checked="${$flag}"/> Disturbia Gustativo
+   </label>
+  <label>
+   <input type="checkbox" name="coriza"th:checked="${$flag}"/> Coriza
+   </label>
+  	 <label>
+   <input type="checkbox" name="assintomatico"th:checked="${$flag}"/> Assintomático
+   </label>
+
+  	Outros: <input type="text" value="" name="outros"/>
+   	<h3>Comorbidades</h3>
+   <label>
+   <input type="checkbox" name="DRCD"th:checked="${$flag}"/> Doenças Resporatórias Crônicas descompensadas
+   </label>
+   <label>
+   <input type="checkbox" name="DCC"th:checked="${$flag}"/> Doenças Cardíacas Crônicas
+   </label>
+   <label>
+   <input type="checkbox" name="diabetes"th:checked="${$flag}"/> Diabetes
+   </label>
+    <label>
+   <input type="checkbox" name="DRCEA"th:checked="${$flag}"/> Doenças Renais Crônicas em estagio avançado
+   </label>
+    <label>
+   <input type="checkbox" name="imunosupresssao"th:checked="${$flag}"/> Imunosupressao
+   </label>
+    <label>
+   <input type="checkbox" name="obesidade"th:checked="${$flag}"/> Obesidade
+   </label>
+   <label>
+   <input type="checkbox" name="gestante"th:checked="${$flag}"/> Gestante
+   </label>
+   <label>
+   <input type="checkbox" name="puerpera"th:checked="${$flag}"/> Puérpera
+   </label>
+   <h3>Notificação</h3>
+   Tipo do Teste: <input type="text" value="" name="tp_teste"/>
+   Resultado:**<input type="text" value="" name="resultado"/>
+   Data da Notificação:** <input type="date" value="" name="dt_notificacao"/>
+   Data do Teste:** <input type="date" value="" name="dt_teste"/>
+   Laudo: <input type="text" value="" name="laudo"/>
+   Laboratório: <input type="text" value="" name="laboratorio"/>
+   Inicio dos Sintomas: <input type="date" value="" name="Ini_sintomas"/>
+   
+ 
+      </div>  
+  <button type="submit">Salvar</button>
+    </form>
+  
+     
+</body>
+</html>
