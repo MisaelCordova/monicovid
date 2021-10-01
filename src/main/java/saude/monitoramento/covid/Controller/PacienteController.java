@@ -33,13 +33,16 @@ public class PacienteController {
 	
 		@RequestMapping(value = "/cadastrarPaciente", method=RequestMethod.POST)
 		public String form(Paciente paciente,Sintoma sintoma,Condicao condicao, Notificacao notificacao) {
-			pacienteRepository.save(paciente);
-			sintoma.setPaciente(paciente);
-			condicao.setPaciente(paciente);
-			notificacao.setPaciente(paciente);
-			sintomaRepository.save(sintoma);
 			condicaoRepository.save(condicao);
+			sintomaRepository.save(sintoma);
 			notificacaoRepository.save(notificacao);
+			paciente.setCondicoes(condicao);
+			paciente.setSintomas(sintoma);
+			pacienteRepository.save(paciente);
+			
+			notificacao.setPaciente(paciente);
+			
+			
 			
 			return "redirect:/cadastrarPaciente";
 		}

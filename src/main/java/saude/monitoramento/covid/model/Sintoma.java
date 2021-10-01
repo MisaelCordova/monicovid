@@ -1,11 +1,11 @@
 package saude.monitoramento.covid.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 
@@ -26,9 +26,9 @@ public class Sintoma {
 	private boolean assintomatico;
 	private String outros;
 	
-	@OneToOne(fetch = FetchType.LAZY,optional = false)
-	@JoinColumn(name="id_paciente", nullable = false)
-	private Paciente paciente;
+	@OneToOne(mappedBy = "sintoma",fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private Paciente paciente;
 	
 	public Sintoma() {
 		

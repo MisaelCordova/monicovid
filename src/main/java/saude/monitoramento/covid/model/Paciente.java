@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
@@ -41,17 +42,17 @@ public class Paciente {
     private String Nomemae;
     private char sexo;
     
-    @OneToOne (mappedBy = "paciente",fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
+    @OneToOne (fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "id_condicoes", nullable =false)
     private Condicao condicoes;
     
-    @OneToOne(mappedBy = "paciente",fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    private Sintoma sintomas;
+    @OneToOne(fetch = FetchType.LAZY,optional = false)
+	@JoinColumn(name="id_sintoma", nullable = false)
+	private Sintoma sintoma;
     
-    @OneToOne (mappedBy = "paciente",fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    private Atendimento atendimentos;
+    @OneToOne(fetch = FetchType.LAZY,optional = true)
+	@JoinColumn(name="id_atendimento", nullable = true)	
+    private Atendimento atendimento;
     
     @OneToMany (mappedBy = "paciente",fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
@@ -62,9 +63,12 @@ public class Paciente {
     	
     }
     
-	public Paciente(boolean temCPF, long cNS, @NotBlank(message = "Data de Nascimento Obrigatoria") String dateNasc,
+	
+	public Paciente(boolean temCPF, long cNS, @NotEmpty String dateNasc,
 			@NotBlank(message = "Nome Obrigatorio") String nome, String bairro, long telefone, boolean profisSaude,
-			long cPF, String nomemae, char sexo) {
+			long cPF, String nomemae, char sexo, Condicao condicoes, Sintoma sintoma, Atendimento atendimentos,
+			Set<Notificacao> noticacoes) {
+		super();
 		this.temCPF = temCPF;
 		CNS = cNS;
 		this.dateNasc = dateNasc;
@@ -75,127 +79,165 @@ public class Paciente {
 		CPF = cPF;
 		Nomemae = nomemae;
 		this.sexo = sexo;
+		this.condicoes = condicoes;
+		this.sintoma = sintoma;
+		this.atendimento = atendimentos;
+		this.noticacoes = noticacoes;
 	}
+
+	
+
+
 
 	public Long getId_paciente() {
 		return id_paciente;
 	}
 
+
 	public void setId_paciente(Long id_paciente) {
 		this.id_paciente = id_paciente;
 	}
+
 
 	public boolean isTemCPF() {
 		return temCPF;
 	}
 
+
 	public void setTemCPF(boolean temCPF) {
 		this.temCPF = temCPF;
 	}
+
 
 	public long getCNS() {
 		return CNS;
 	}
 
+
 	public void setCNS(long cNS) {
 		CNS = cNS;
 	}
+
 
 	public String getDateNasc() {
 		return dateNasc;
 	}
 
+
 	public void setDateNasc(String dateNasc) {
 		this.dateNasc = dateNasc;
 	}
+
 
 	public String getNome() {
 		return nome;
 	}
 
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 
 	public String getBairro() {
 		return bairro;
 	}
 
+
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
+
 
 	public long getTelefone() {
 		return telefone;
 	}
 
+
 	public void setTelefone(long telefone) {
 		this.telefone = telefone;
 	}
+
 
 	public boolean isProfisSaude() {
 		return profisSaude;
 	}
 
+
 	public void setProfisSaude(boolean profisSaude) {
 		this.profisSaude = profisSaude;
 	}
+
 
 	public long getCPF() {
 		return CPF;
 	}
 
+
 	public void setCPF(long cPF) {
 		CPF = cPF;
 	}
+
 
 	public String getNomemae() {
 		return Nomemae;
 	}
 
+
 	public void setNomemae(String nomemae) {
 		Nomemae = nomemae;
 	}
+
 
 	public char getSexo() {
 		return sexo;
 	}
 
+
 	public void setSexo(char sexo) {
 		this.sexo = sexo;
 	}
+
 
 	public Condicao getCondicoes() {
 		return condicoes;
 	}
 
+
 	public void setCondicoes(Condicao condicoes) {
 		this.condicoes = condicoes;
 	}
 
+
 	public Sintoma getSintomas() {
-		return sintomas;
+		return sintoma;
 	}
 
-	public void setSintomas(Sintoma sintomas) {
-		this.sintomas = sintomas;
+
+	public void setSintomas(Sintoma sintoma) {
+		this.sintoma = sintoma;
 	}
 
-	public Atendimento getAtendimentos() {
-		return atendimentos;
+
+	public Atendimento getAtendimento() {
+		return atendimento;
 	}
 
-	public void setAtendimentos(Atendimento atendimentos) {
-		this.atendimentos = atendimentos;
+
+	public void setAtendimentos(Atendimento atendimento) {
+		this.atendimento = atendimento;
 	}
+
 
 	public Set<Notificacao> getNoticacoes() {
 		return noticacoes;
 	}
 
+
 	public void setNoticacoes(Set<Notificacao> noticacoes) {
 		this.noticacoes = noticacoes;
 	}
+
 
 	@Override
 	public int hashCode() {
@@ -227,14 +269,6 @@ public class Paciente {
 		} else if (!nome.equals(other.nome))
 			return false;
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Paciente [id_paciente=" + id_paciente + ", temCPF=" + temCPF + ", CNS=" + CNS + ", dateNasc=" + dateNasc
-				+ ", nome=" + nome + ", bairro=" + bairro + ", telefone=" + telefone + ", profisSaude=" + profisSaude
-				+ ", CPF=" + CPF + ", Nomemae=" + Nomemae + ", sexo=" + sexo + ", condicoes=" + condicoes
-				+ ", sintomas=" + sintomas + ", atendimentos=" + atendimentos + ", noticacoes=" + noticacoes + "]";
 	}
 
 

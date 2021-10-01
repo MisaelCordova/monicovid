@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -35,8 +36,8 @@ public class Atendimento {
 	@Enumerated(EnumType.STRING)
 	private Desfeixo desfeixo; 
 	
-	@OneToOne(fetch = FetchType.LAZY,optional = true)
-	@JoinColumn(name="id_paciente", nullable = true)	
+	@OneToOne (mappedBy = "atendimento",fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
 	private Paciente paciente;
 	
 	@OneToMany(mappedBy = "atendimentos")
